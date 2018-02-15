@@ -1,0 +1,140 @@
+@import url("https://fonts.googleapis.com/css?family=Mukta+Mahee:200,400,700");
+/* Basic Setup */
+body {
+  font-family: 'Mukta Mahee', sans-serif; }
+
+h1, h2, h3, h4, p {
+  padding: 0;
+  margin: 0; }
+
+.hide {
+  display: none; }
+
+/* App Setup */
+.App {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto; }
+
+/* SVG Setup */
+svg {
+  width: 150px;
+  height: 150px; }
+  svg #icon-circle {
+    fill: #5b5d8e; }
+  svg #icon-shadow {
+    fill: #373b5d; }
+  svg #icons {
+    fill: #eaf1f4; }
+
+/* Header Setup */
+.header {
+  background: #373b5d;
+  color: #eaf1f4;
+  text-align: center;
+  padding: .5em 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+  z-index: 1; }
+  .header svg {
+    width: 75px;
+    height: auto; }
+    .header svg #icon-circle {
+      fill: none; }
+  .header h3 {
+    margin-top: -20px; }
+
+/* Panel Setup */
+.panels {
+  display: flex;
+  flex-direction: column; }
+  .panels .panel {
+    flex-grow: 1;
+    background: #f3f7f8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; }
+    .panels .panel .panel-detail {
+      pointer-events: none; }
+    .panels .panel .panel-holder {
+      cursor: pointer; }
+    .panels .panel h1 {
+      text-align: center;
+      text-transform: uppercase;
+      color: #373b5d;
+      pointer-events: none; }
+    .panels .panel svg {
+      pointer-events: none; }
+
+/* Steps Setup */
+.steps {
+  margin-top: -60px; }
+  .steps .step-one {
+    margin-bottom: 100px; }
+  .steps .step-title {
+    position: relative;
+    margin: 20px 0; }
+    .steps .step-title svg {
+      display: block;
+      margin: 50px auto 15px;
+      width: 75px;
+      height: 75px;
+      top: 50%;
+      left: 50%; }
+    .steps .step-title h2 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      text-shadow: 1px 1px 5px black; }
+  .steps .step-info {
+    background: white;
+    width: 90vw;
+    text-align: center;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2); }
+    .steps .step-info h3 {
+      margin: 20px 0 0; }
+    .steps .step-info h3:first-of-type {
+      margin: 0; }
+    .steps .step-info .input-and-error {
+      position: relative; }
+      .steps .step-info .input-and-error .inputs {
+        border: 1px solid #373b5d;
+        border-radius: 3px;
+        width: 200px;
+        height: 20px;
+        font-size: 16px;
+        padding: 0 8px; }
+      .steps .step-info .input-and-error .error-warning {
+        width: 200px;
+        margin: 0 auto;
+        border: red solid 1px;
+        background: pink;
+        border-radius: 3px;
+        padding: 0 4px; }
+    .steps .step-info .school-quote-range {
+      background: #f3f7f8;
+      border-radius: 5px;
+      padding: 10px;
+      margin-top: 40px;
+      box-shadow: 0px 2px 15px -1px rgba(0, 0, 0, 0.2) inset; }
+      .steps .step-info .school-quote-range h3 {
+        margin: 0 0 10px; }
+      .steps .step-info .school-quote-range .school-quote-high-low {
+        padding: 10px 0; }
+        .steps .step-info .school-quote-range .school-quote-high-low .details {
+          font-size: .75em;
+          margin: 30px 0 0; }
+
+/* Footer Setup */
+.footer {
+  background: #373b5d;
+  color: #eaf1f4;
+  text-align: center; }
