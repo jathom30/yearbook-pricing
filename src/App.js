@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 
 import Header from './components/Header';
-// import School from './components/School';
-// import Signature from './components/Signature';
 import Side from './components/Side';
 
 import { SCHOOL, SIGNATURE } from "./iconData";
@@ -72,7 +70,34 @@ export default class App extends Component {
       bookQuantity: e.target.value
     });
   }
-  averageButton(e) {
+
+  //check for 100 min on bookCount
+  bookQuantityCheck() {
+    let bookQuantityError = null;
+    //if bookQuantity is zero
+    if (this.state.bookQuantity === '') {
+      bookQuantityError = null;
+      //if bookQuantity is less than 100
+    } else if (this.state.bookQuantity < 100) {
+      bookQuantityError=<div className="error-warning"><p>Quantity must be at least 100</p></div>;
+    }
+    return bookQuantityError
+  }
+  //check page count for multiple of four
+  pageCountCheck(){
+    let pageCountError = null;
+    //if pageCount is zero
+    if (this.state.pageCount === '') {
+      pageCountError = null;
+      //if bookQuantity is not divisible by four
+    } else if (this.state.pageCount % 4 !== 0) {
+      pageCountError =<div className="error-warning"><p>Must be a multiple of four</p></div>;
+    }
+    return pageCountError
+  }
+
+  //create average div 
+  createAverage() {
     const pageCount = this.state.pageCount;
     const bookCount = this.state.bookQuantity;
     const pageAverageCost = 0.208058822510823;
@@ -86,7 +111,10 @@ export default class App extends Component {
 
     //render school price quote section as needed
     let averages = null;
-    if (schoolAverage === Infinity) {
+    let pageCountError = this.pageCountCheck();
+    let pageQuantityError = this.bookQuantityCheck();
+    // if schoolAverage is Infinity(0/0) or pageCount is not empty or pageQuantity is not empty
+    if (schoolAverage === Infinity || pageCountError !== null || pageQuantityError !== null) {
       averages = null;
     } else {
       averages= <div className="school-quote-range">
@@ -97,7 +125,8 @@ export default class App extends Component {
                     <p>Maximum cost per book: <strong>${schoolMax}</strong></p>
                     <p className="details">Average costs are built off available data. Print prices have fluctuated somewhat in the past and the above values represent the likely range the quote can move between.</p>
                   </div>
-                </div>
+                </div>;
+
     }
     return averages
   }
@@ -124,26 +153,14 @@ export default class App extends Component {
     } = this.state;
 
     // check for multiple of four pageCount
-    let pageCountError = null;
-    if (pageCount % 4 !== 0) {
-      pageCountError =<div className="error-warning">
-                        <p>Must be a multiple of four</p>
-                      </div>;
-    }
+    let pageCountError = this.pageCountCheck();
 
     //check for 100 min on bookCount
-    let bookQuantityError = null;
-    if(bookQuantity > 1 && bookQuantity < 100) {
-      bookQuantityError=<div className="error-warning">
-                          <p>Quantity must be at least 100</p>
-                        </div>
-    }
-
+    let bookQuantityError = this.bookQuantityCheck();
+    
     //add averages to school page
-    let averages = null;
-    if (pageCount !== '' && bookQuantity !== '') {
-      averages =<div>{this.averageButton()}</div>
-    }
+    let averages = this.createAverage();
+    
 
     return (
       <div className="App" >
@@ -167,7 +184,6 @@ export default class App extends Component {
 
             handlePageCount={this.handlePageCount}
             handleBookQuantity={this.handleBookQuantity}
-            averageButton={this.averageButton}
             resetInputs={this.resetInputs}
           />
           
