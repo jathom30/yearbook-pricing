@@ -22,25 +22,18 @@ export default class SchoolSteps extends Component {
 
     return(
       <div className={showSteps ? "steps" : "steps hide"}>
-        {/* <div className="step-one">
-          <div className="step-title">
-            <OneIcon />
-            <h2>Section One</h2>
-          </div> */}
 
-          <StepOne 
-            pageCount={pageCount}
-            handlePageCount={handlePageCount}
-            bookQuantity={bookQuantity}
-            handleBookQuantity={handleBookQuantity}
-            averageButton={averageButton}
-            pageCountError={pageCountError}
-            bookQuantityError={bookQuantityError}
-            averages={averages}
-            resetInputs={resetInputs}
-          />
-
-        {/* </div> */}
+        <StepOne 
+          pageCount={pageCount}
+          handlePageCount={handlePageCount}
+          bookQuantity={bookQuantity}
+          handleBookQuantity={handleBookQuantity}
+          averageButton={averageButton}
+          pageCountError={pageCountError}
+          bookQuantityError={bookQuantityError}
+          averages={averages}
+          resetInputs={resetInputs}
+        />
 
         <StepTwo />
 

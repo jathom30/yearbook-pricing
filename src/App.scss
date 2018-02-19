@@ -12,6 +12,22 @@ $circle-fill: #5b5d8e;
 $shadow-fill: #373b5d;
 $icon-fill: #eaf1f4;
 
+//Mixins
+@mixin button-setup($color) {
+  padding: 5px 30px;
+  margin: 10px 0 0;
+  font-size: 16px;
+  border: none;
+  border-radius: 3px;
+  text-transform: uppercase;
+  background: $color;
+  color: white;
+  cursor: pointer;
+  &:hover {
+    background: darken($color, 10%);
+  }
+}
+
 
 /* Basic Setup */
 
@@ -76,6 +92,18 @@ svg {
   h3 {
     margin-top: -20px;
   }
+}
+
+/* Button Styles */
+.button {
+  text-align: center;
+}
+.reset-button {
+  @include button-setup($button-red);
+}
+.return-button {
+  @include button-setup($button-green);
+  margin: 30px 0 20px;
 }
 
 /* Panel Setup */

@@ -39,8 +39,8 @@ export default class StepOne extends Component {
             {/* output averages once input is received */}
             {averages}
 
-          <div className={averages ? '' : 'hide'}>
-            <button type="button" onClick={resetInputs}>reset</button>
+          <div className={averages ? 'button' : 'hide'}>
+            <button className="reset-button" type="button" onClick={resetInputs}>reset</button>
           </div>
 
         </div>

@@ -5,8 +5,7 @@ export default class ResetReturn extends Component {
     const { returnClick } = this.props;
     return(
       <div className="button">
-        <button className="reset">Reset</button>
-        <button className="return" onClick={returnClick}>Back</button>
+        <button className="return-button" onClick={returnClick}>Back</button>
       </div>
     );
   }
