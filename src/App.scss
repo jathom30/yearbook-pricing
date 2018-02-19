@@ -2,10 +2,8 @@
 
 // Variables
 $background: #f3f7f8;
-$dark-blue: #373b5d;
-$shadow: #373b5d;
 
-$button-red: #984047;
+$button-red: #a54d54;
 $button-green: #22887f;
 
 $circle-fill: #5b5d8e;
@@ -72,7 +70,7 @@ svg {
 
 /* Header Setup */
 .header {
-  background: $dark-blue;
+  background: $shadow-fill;
   color: $icon-fill;
   text-align: center;
   padding: .5em 0;
@@ -179,7 +177,7 @@ svg {
     .input-and-error{
       position: relative;
       .inputs {
-        border: 1px solid $dark-blue;
+        border: 1px solid $shadow-fill;
         border-radius: 3px;
         width: 200px;
         height: 20px;
@@ -196,7 +194,7 @@ svg {
         padding: 0 4px;
       }
     }
-    .school-quote-range {
+    .quote-range {
       background: $background;
       border-radius: 5px;
       padding: 10px;
@@ -217,9 +215,41 @@ svg {
 }
 
 
+/* Password Setup */
+.password {
+  width: 250px;
+  padding: 5px;
+  text-align: center;
+  background: lighten($color: $button-red, $amount: 40%);
+  border-radius: 3px;
+  box-shadow: 0 5px 5px rgba(0,0,0,.2);
+  border: 3px solid $button-red;
+  z-index: 100;
+  .lock-icon {
+    width: 100px;
+    height: auto;
+    display: inline-block;
+    #icon-shadow {
+      fill: darken($color: $button-red, $amount: 10%);
+    }
+    #icon-circle {
+      fill: $button-red;
+    }
+    #icons {
+      fill: lighten($color: $button-red, $amount: 10%);
+    }
+  }
+  h2 {
+    color: $shadow-fill;
+    margin: 0 auto;
+    padding: 0 0 10px;
+  }
+}
+
+
 /* Footer Setup */
 .footer {
-  background: $dark-blue;
+  background: $shadow-fill;
   color: $icon-fill;
   text-align: center;
 }

@@ -17,14 +17,24 @@ export default class App extends Component {
       showSignature: true,
       showSchoolSteps: false,
       showSignatureSteps: false,
+      password: true,
       pageCount: '',
       bookQuantity: '',
+      preferredProfit: '',
+      printerQuote: '',
+      quantitySignature: '',
+      passwordValue: '',
     };
     this.handleClick = this.handleClick.bind(this);
     this.returnClick = this.returnClick.bind(this);
     this.handlePageCount = this.handlePageCount.bind(this);
     this.handleBookQuantity = this.handleBookQuantity.bind(this);
     this.resetInputs = this.resetInputs.bind(this);
+    this.passwordInput = this.passwordInput.bind(this);
+    this.passwordButton = this.passwordButton.bind(this);
+    this.quantitySignatureChange = this.quantitySignatureChange.bind(this);
+    this.printerQuoteChange = this.printerQuoteChange.bind(this);
+    this.preferredProfitChange = this.preferredProfitChange.bind(this);
   }
 
   handleClick(e) {
@@ -117,7 +127,7 @@ export default class App extends Component {
     if (schoolAverage === Infinity || pageCountError !== null || pageQuantityError !== null) {
       averages = null;
     } else {
-      averages= <div className="school-quote-range">
+      averages= <div className="quote-range">
                   <h3>Price Quotes (per book)</h3>
                   <p>Average cost per book: <strong>${schoolAverage}</strong></p>
                   <div className="school-quote-high-low">
@@ -139,6 +149,51 @@ export default class App extends Component {
     });
   }
 
+  // Signature Step One Input Form
+  quantitySignatureChange(e) {
+    this.setState({
+      quantitySignature: e.target.value,
+    });
+  }
+  printerQuoteChange(e) {
+    this.setState({
+      printerQuote: e.target.value,
+    });
+  }
+  preferredProfitChange(e) {
+    this.setState({
+      preferredProfit: e.target.value,
+    });
+  }
+
+  createSignatureQuotes() {
+    const { printerQuote, quantitySignature, preferredProfit } = this.state;
+    let minimum = Math.round((printerQuote / quantitySignature) * 100) / 100;
+    let recommended = Math.round(((parseInt(printerQuote, 10) + parseInt(preferredProfit, 10)) / quantitySignature) * 100 ) / 100;
+    let signatureQuoteInfo =<div className="quote-range">
+                              <h3>Price Per Book</h3>
+                              <p>Minimum to break even: <strong>${minimum}</strong></p>
+                              <p>Recommended for desired profit: <strong>${recommended}</strong></p>
+                            </div>
+    return signatureQuoteInfo
+  }
+
+  //password input and button on Signature Side
+  passwordInput(e) {
+    this.setState({
+      passwordValue: e.target.value,
+    });
+  }
+  passwordButton(e) {
+    // if password is correct show signature steps
+    if (this.state.passwordValue === 'arnold4121') {
+      this.setState({
+        password: false,
+      });
+    }
+    // console.log(this.state.passwordValue);
+  }
+
   render() {
     const { 
       school, 
@@ -149,7 +204,12 @@ export default class App extends Component {
       showSignatureSteps, 
       showSchoolSteps, 
       pageCount, 
-      bookQuantity 
+      bookQuantity,
+      password,
+      passwordValue,
+      printerQuote,
+      quantitySignature,
+      preferredProfit,
     } = this.state;
 
     // check for multiple of four pageCount
@@ -160,6 +220,8 @@ export default class App extends Component {
     
     //add averages to school page
     let averages = this.createAverage();
+
+    let signatureQuoteInfo = this.createSignatureQuotes();
     
 
     return (
@@ -197,6 +259,19 @@ export default class App extends Component {
             showSteps={showSignatureSteps}
             onClick={this.hideSection}
             returnClick={this.returnClick}
+            
+            quantitySignature={quantitySignature}
+            quantitySignatureChange={this.quantitySignatureChange}
+            printerQuote={printerQuote}
+            printerQuoteChange={this.printerQuoteChange}
+            preferrefProfit={preferredProfit}
+            preferredProfitChange={this.preferredProfitChange}
+            signatureQuoteInfo={signatureQuoteInfo}
+            
+            password={password}
+            passwordValue={passwordValue}
+            passwordInput={this.passwordInput}
+            passwordButton={this.passwordButton}
           />
         </div>
 

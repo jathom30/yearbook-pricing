@@ -24,7 +24,18 @@ export default class Side extends Component {
       pageCountError,
       bookQuantityError,
       averages, 
-      resetInputs
+      resetInputs,
+      password,
+      passwordValue,
+      passwordInput,
+      passwordButton,
+      quantitySignature,
+      quantitySignatureChange,
+      printerQuote,
+      printerQuoteChange,
+      signatureQuoteInfo,
+      preferredProfit,
+      preferredProfitChange,
     } = this.props;
 
     //step creation
@@ -59,19 +70,34 @@ export default class Side extends Component {
     }
 
     //steps fill for signature data
+    // if you click on Signature
     if (data.title === "Signature") {
-      steps = <SignatureSteps 
-                showSteps={showSteps}
-                returnClick={returnClick}
-              />
-      panelHolderClass += ' signature';
-      panelClass += ' signature';
+        steps = <SignatureSteps 
+                  showSteps={showSteps}
+                  returnClick={returnClick}
+
+                  password={password}
+                  passwordValue={passwordValue}
+                  passwordInput={passwordInput}
+                  passwordButton={passwordButton}
+
+                  quantitySignature={quantitySignature}
+                  quantitySignatureChange={quantitySignatureChange}
+                  printerQuote={printerQuote}
+                  printerQuoteChange={printerQuoteChange}
+                  preferredProfit={preferredProfit}
+                  preferredProfitChange={preferredProfitChange}
+                  signatureQuoteInfo={signatureQuoteInfo}
+                />
+        panelHolderClass += ' signature';
+        panelClass += ' signature';
       //hide school if school is clicked
       if (!showSignature) {
         panelClass += ' hide';
         panelStyle = {display: 'none'};
       }
     }
+
 
 
     return(
