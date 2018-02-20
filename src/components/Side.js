@@ -29,6 +29,7 @@ export default class Side extends Component {
       passwordValue,
       passwordInput,
       passwordButton,
+      submitPassword,
       quantitySignature,
       quantitySignatureChange,
       printerQuote,
@@ -83,6 +84,7 @@ export default class Side extends Component {
                   passwordValue={passwordValue}
                   passwordInput={passwordInput}
                   passwordButton={passwordButton}
+                  submitPassword={submitPassword}
 
                   quantitySignature={quantitySignature}
                   quantitySignatureChange={quantitySignatureChange}
@@ -94,6 +96,8 @@ export default class Side extends Component {
                   profitValue={profitValue}
                   profitValueChange={profitValueChange}
                   signatureProfit={signatureProfit}
+
+                  resetInputs={resetInputs}
                 />
         panelHolderClass += ' signature';
         panelClass += ' signature';

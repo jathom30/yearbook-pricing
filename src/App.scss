@@ -80,6 +80,7 @@ svg {
   justify-content: space-around;
   position: relative;
   z-index: 1;
+  cursor: pointer;
   svg {
     width: 75px;
     height: auto;
@@ -87,14 +88,21 @@ svg {
       fill: none;
     }
   }
-  h3 {
-    margin-top: -20px;
-  }
 }
 
 /* Button Styles */
-.button {
-  text-align: center;
+.reset-return{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 65vw;
+  margin: 0 auto;
+  .button {
+    text-align: center;
+  }
+  .reset-button, .return-button {
+    margin: 20px auto;
+  }
 }
 .reset-button {
   @include button-setup($button-red);
@@ -103,6 +111,7 @@ svg {
   @include button-setup($button-green);
   margin: 30px 0 20px;
 }
+
 
 /* Panel Setup */
 .panels {
@@ -137,7 +146,6 @@ svg {
 
 /* Steps Setup */
 .steps{
-  margin-top: -60px;
   .step-one {
     margin-bottom: 100px;
   }
@@ -174,16 +182,16 @@ svg {
     h3:first-of-type {
       margin: 0;
     }
+    .inputs {
+      border: 1px solid $shadow-fill;
+      border-radius: 3px;
+      width: 200px;
+      height: 20px;
+      font-size: 16px;
+      padding: 0 8px;
+    }
     .input-and-error{
       position: relative;
-      .inputs {
-        border: 1px solid $shadow-fill;
-        border-radius: 3px;
-        width: 200px;
-        height: 20px;
-        font-size: 16px;
-        padding: 0 8px;
-      }
       .error-warning {
         // position: absolute;
         width: 200px;
@@ -243,6 +251,30 @@ svg {
     color: $shadow-fill;
     margin: 0 auto;
     padding: 0 0 10px;
+  }
+  .password-inputs {
+    #password, #signature-password-button {
+      display: inline-block;
+      font-size: 20px;
+      padding: 5px 10px;
+    }
+    #password {
+      border: 1px solid $shadow-fill;
+      border-right: none;
+      border-radius: 3px 0 0 3px;
+      width: 100px;
+    }
+    #signature-password-button {
+      border: 1px solid $shadow-fill;
+      border-left: none;
+      border-radius: 0 3px 3px 0;
+      background: $button-red;
+      color: white;
+      cursor: pointer;
+      &:hover {
+        background: darken($color: $button-red, $amount: 10%);
+      }
+    }
   }
 }
 

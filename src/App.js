@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import 'normalize.css';
 import './App.css';
-
 import Header from './components/Header';
 import Side from './components/Side';
 
@@ -17,7 +17,7 @@ export default class App extends Component {
       showSignature: true,
       showSchoolSteps: false,
       showSignatureSteps: false,
-      password: false,
+      password: true,
       pageCount: '',
       bookQuantity: '',
       preferredProfit: '',
@@ -33,6 +33,7 @@ export default class App extends Component {
     this.resetInputs = this.resetInputs.bind(this);
     this.passwordInput = this.passwordInput.bind(this);
     this.passwordButton = this.passwordButton.bind(this);
+    this.submitPassword = this.submitPassword.bind(this);
     this.quantitySignatureChange = this.quantitySignatureChange.bind(this);
     this.printerQuoteChange = this.printerQuoteChange.bind(this);
     this.preferredProfitChange = this.preferredProfitChange.bind(this);
@@ -148,6 +149,10 @@ export default class App extends Component {
     this.setState({
       pageCount: '',
       bookQuantity: '',
+      quantitySignature: '',
+      printerQuote: '',
+      preferredProfit: '',
+      profitValue: '',
     });
   }
 
@@ -218,7 +223,16 @@ export default class App extends Component {
         password: false,
       });
     }
-    // console.log(this.state.passwordValue);
+  }
+  //submit password on 'enter'
+  submitPassword(e) {
+    if (e.keyCode === 13) {
+      if (this.state.passwordValue === 'arnold4121') {
+        this.setState({
+          password: false,
+        });
+      }
+    }
   }
 
   render() {
@@ -257,7 +271,8 @@ export default class App extends Component {
 
     return (
       <div className="App" >
-        <Header />
+        <Header 
+          returnClick={this.returnClick} />
 
         <div className="panels">
           {/* School Side */}
@@ -306,6 +321,9 @@ export default class App extends Component {
             passwordValue={passwordValue}
             passwordInput={this.passwordInput}
             passwordButton={this.passwordButton}
+            submitPassword={this.submitPassword}
+
+            resetInputs={this.resetInputs}
           />
         </div>
 

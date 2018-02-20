@@ -13,10 +13,10 @@ export default class StepTwo extends Component {
         </div>
         <div className="step-info">
         <p>Set Price Per Book:</p>
-          <span>$</span><input id="price-set" type="number" placeholder="10" value={profitValue} onChange={profitValueChange} />
+          <span>$</span><input id="price-set" className="inputs" type="number" placeholder="10" value={profitValue} onChange={profitValueChange} />
           
           {signatureProfit}
-          
+
         </div>
       </div>
     );

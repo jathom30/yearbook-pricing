@@ -4,9 +4,9 @@ import BookIcon from '../assets/BookIcon';
 
 export default class Header extends Component {
   render() {
-    const { handleClick } = this.props;
+    const { returnClick } = this.props;
     return(
-      <div className="header" onClick={handleClick}>
+      <div className="header" onClick={returnClick}>
         <BookIcon />
         <div className="header-text">
           <h1>Signature Studio</h1>

@@ -15,11 +15,11 @@ export default class StepOne extends Component {
         </div>
         <div className="step-info">
           <p>Quantity of books requested:</p>
-          <input id="quantity-signature" type="number" value={quantitySignature} onChange={quantitySignatureChange} placeholder="100" />
+          <input id="quantity-signature" className="inputs" type="number" value={quantitySignature} onChange={quantitySignatureChange} placeholder="100" />
           <p>Printer's quoted price:</p>
-          <span>$</span><input id="quote-signature" type="number" value={printerQuote} onChange={printerQuoteChange} placeholder="1000" />
+          <span>$</span><input id="quote-signature" className="inputs" type="number" value={printerQuote} onChange={printerQuoteChange} placeholder="1000" />
           <p>Preferred Profit:</p>
-          <span>$</span><input type="number" value={preferredProfit} onChange={preferredProfitChange} placeholder="1000" />
+          <span>$</span><input type="number" className="inputs" value={preferredProfit} onChange={preferredProfitChange} placeholder="1000" />
 
           { signatureQuoteInfo }
         </div>

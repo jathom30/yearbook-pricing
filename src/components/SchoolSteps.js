@@ -37,7 +37,7 @@ export default class SchoolSteps extends Component {
 
         <StepTwo />
 
-        <ResetReturn returnClick={returnClick}/>
+        <ResetReturn returnClick={returnClick} resetInputs={resetInputs} averages={averages} />
       </div>
     );
   }

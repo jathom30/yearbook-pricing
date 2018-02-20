@@ -14,6 +14,7 @@ export default class SignatureSteps extends Component {
       passwordValue, 
       passwordInput, 
       passwordButton, 
+      submitPassword,
       quantitySignature, 
       quantitySignatureChange, 
       printerQuote, 
@@ -24,6 +25,7 @@ export default class SignatureSteps extends Component {
       profitValue,
       profitValueChange,
       signatureProfit,
+      resetInputs,
     } = this.props;
     
     let stepsOrPassword = null;
@@ -31,7 +33,8 @@ export default class SignatureSteps extends Component {
       stepsOrPassword = <Password 
                           passwordValue={passwordValue} 
                           passwordInput={passwordInput} 
-                          passwordButton={passwordButton} />
+                          passwordButton={passwordButton}
+                          submitPassword={submitPassword} />
     } else {
       stepsOrPassword = <div>
                           <StepOne 
@@ -42,10 +45,13 @@ export default class SignatureSteps extends Component {
                             signatureQuoteInfo={signatureQuoteInfo}
                             preferredProfit={preferredProfit}
                             preferredProfitChange={preferredProfitChange} />
+
                           <StepTwo 
                             profitValue={profitValue}
                             profitValueChange={profitValueChange}
-                            signatureProfit={signatureProfit} />
+                            signatureProfit={signatureProfit}
+                            resetInputs={resetInputs} />
+
                         </div>
     }
 
@@ -54,7 +60,7 @@ export default class SignatureSteps extends Component {
 
         { stepsOrPassword }  
 
-        <ResetReturn returnClick={returnClick}/>
+        <ResetReturn returnClick={returnClick} resetInputs={resetInputs} signatureProfit={signatureProfit}/>
       </div>
     );
   }
