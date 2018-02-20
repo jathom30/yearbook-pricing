@@ -36,6 +36,9 @@ export default class Side extends Component {
       signatureQuoteInfo,
       preferredProfit,
       preferredProfitChange,
+      profitValue,
+      profitValueChange,
+      signatureProfit,
     } = this.props;
 
     //step creation
@@ -88,6 +91,9 @@ export default class Side extends Component {
                   preferredProfit={preferredProfit}
                   preferredProfitChange={preferredProfitChange}
                   signatureQuoteInfo={signatureQuoteInfo}
+                  profitValue={profitValue}
+                  profitValueChange={profitValueChange}
+                  signatureProfit={signatureProfit}
                 />
         panelHolderClass += ' signature';
         panelClass += ' signature';

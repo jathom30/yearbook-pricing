@@ -4,6 +4,7 @@ import TwoIcon from '../../assets/TwoIcon';
 
 export default class StepTwo extends Component {
   render() {
+    const { profitValue, profitValueChange, signatureProfit } = this.props;
     return(
       <div className="step-two">
         <div className="step-title">
@@ -12,9 +13,10 @@ export default class StepTwo extends Component {
         </div>
         <div className="step-info">
         <p>Set Price Per Book:</p>
-          <span>$</span><input id="price-set" type="number" placeholder="10" />
-          <button id="signature-price" type="button">Submit</button>
-          <p id="signature-profit">Profit:</p>
+          <span>$</span><input id="price-set" type="number" placeholder="10" value={profitValue} onChange={profitValueChange} />
+          
+          {signatureProfit}
+          
         </div>
       </div>
     );

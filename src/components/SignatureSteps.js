@@ -21,6 +21,9 @@ export default class SignatureSteps extends Component {
       signatureQuoteInfo,
       preferredProfit,
       preferredProfitChange,
+      profitValue,
+      profitValueChange,
+      signatureProfit,
     } = this.props;
     
     let stepsOrPassword = null;
@@ -39,7 +42,10 @@ export default class SignatureSteps extends Component {
                             signatureQuoteInfo={signatureQuoteInfo}
                             preferredProfit={preferredProfit}
                             preferredProfitChange={preferredProfitChange} />
-                          <StepTwo />
+                          <StepTwo 
+                            profitValue={profitValue}
+                            profitValueChange={profitValueChange}
+                            signatureProfit={signatureProfit} />
                         </div>
     }
 

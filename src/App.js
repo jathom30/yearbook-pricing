@@ -17,12 +17,13 @@ export default class App extends Component {
       showSignature: true,
       showSchoolSteps: false,
       showSignatureSteps: false,
-      password: true,
+      password: false,
       pageCount: '',
       bookQuantity: '',
       preferredProfit: '',
       printerQuote: '',
       quantitySignature: '',
+      profitValue: '',
       passwordValue: '',
     };
     this.handleClick = this.handleClick.bind(this);
@@ -35,6 +36,7 @@ export default class App extends Component {
     this.quantitySignatureChange = this.quantitySignatureChange.bind(this);
     this.printerQuoteChange = this.printerQuoteChange.bind(this);
     this.preferredProfitChange = this.preferredProfitChange.bind(this);
+    this.profitValueChange = this.profitValueChange.bind(this);
   }
 
   handleClick(e) {
@@ -170,12 +172,37 @@ export default class App extends Component {
     const { printerQuote, quantitySignature, preferredProfit } = this.state;
     let minimum = Math.round((printerQuote / quantitySignature) * 100) / 100;
     let recommended = Math.round(((parseInt(printerQuote, 10) + parseInt(preferredProfit, 10)) / quantitySignature) * 100 ) / 100;
-    let signatureQuoteInfo =<div className="quote-range">
-                              <h3>Price Per Book</h3>
-                              <p>Minimum to break even: <strong>${minimum}</strong></p>
-                              <p>Recommended for desired profit: <strong>${recommended}</strong></p>
-                            </div>
+    let signatureQuoteInfo = null;
+    // if minimum and recommended is not a number, show nothing
+    if (!isNaN(minimum) && !isNaN(recommended) && minimum !== Infinity && recommended !== Infinity) {
+      signatureQuoteInfo =<div className="quote-range">
+                            <h3>Price Per Book</h3>
+                            <p>Minimum to break even: <strong>${minimum}</strong></p>
+                            <p>Recommended for desired profit: <strong>${recommended}</strong></p>
+                          </div>
+    }
     return signatureQuoteInfo
+  }
+
+  // Signature Step Two Input Form
+  profitValueChange(e) {
+    this.setState({
+      profitValue: e.target.value,
+    });
+  }
+
+  createSignatureProfit() {
+    const { printerQuote, quantitySignature, profitValue } = this.state;
+    let profit = quantitySignature * profitValue - printerQuote;
+    let profitInfo = null;
+    //if any of the inputs are blank, don't show profit results
+    if (quantitySignature !== '' && profitValue !== '' && printerQuote !== '') {
+    profitInfo =<div className="quote-range">
+                  <h3>Total Profits at set Price</h3>
+                  <p><strong>${profit}</strong></p>
+                </div>
+    }
+    return profitInfo;
   }
 
   //password input and button on Signature Side
@@ -210,6 +237,7 @@ export default class App extends Component {
       printerQuote,
       quantitySignature,
       preferredProfit,
+      profitValue,
     } = this.state;
 
     // check for multiple of four pageCount
@@ -221,8 +249,11 @@ export default class App extends Component {
     //add averages to school page
     let averages = this.createAverage();
 
+    //add signature price points to signature page
     let signatureQuoteInfo = this.createSignatureQuotes();
     
+    //add custom profit to step two of signature page
+    let signatureProfit = this.createSignatureProfit();
 
     return (
       <div className="App" >
@@ -267,6 +298,9 @@ export default class App extends Component {
             preferrefProfit={preferredProfit}
             preferredProfitChange={this.preferredProfitChange}
             signatureQuoteInfo={signatureQuoteInfo}
+            profitValue={profitValue}
+            profitValueChange={this.profitValueChange}
+            signatureProfit={signatureProfit}
             
             password={password}
             passwordValue={passwordValue}
