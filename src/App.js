@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import 'normalize.css';
 import './App.css';
+import { TimelineMax, Elastic, Sine } from 'gsap';
+
 import Header from './components/Header';
 import Side from './components/Side';
 
@@ -40,36 +42,80 @@ export default class App extends Component {
     this.profitValueChange = this.profitValueChange.bind(this);
   }
 
+  //Animations
+  //move icons out
+  iconsOut() {
+    const tl = new TimelineMax()
+    tl
+    .to(".panel-holder", .5, {x: '-300%', ease:Sine.easeInOut})
+    .set(".panel-holder h1" , {y: '-260%', color: 'white', scale: 2, textShadow: '1px 1px 5px black'})
+    .set("#main-icon", {scale: .75})
+  }
+  //slide in new icon and steps
+  slideInSteps() {
+    const tl = new TimelineMax()
+    tl
+    .fromTo(".steps", .4, {x: '100%', autoAlpha: 0}, {x: '0%', autoAlpha: 1, ease:Elastic.easeOut.config(1.2, 1)})
+    .fromTo(".step-title svg", 1.1, {rotation: -20}, {rotation: 0, ease:Elastic.easeOut.config(1.2, .3)}, 0.1)
+    .fromTo(".lock-icon", 1.1, {rotation: -20}, {rotation: 0, ease:Elastic.easeOut.config(1.2, .3)}, 0.1)
+    .fromTo(".panel-holder", .5, {x: '0%', y: '100%'}, {x:'0%', y:'0%', ease:Elastic.easeOut.config(1.2, .5)}, 0)
+  }
+  //return icons
+  returnTitleIcon() {
+    const tl = new TimelineMax();
+    tl 
+      .to(".steps", .5, {x: '200%'})
+      .to(".panel-holder", .5, {y: '-200%'}, 0)
+      .set(".panel-holder h1", {y:'0%', color: '#373b5d', scale: 1, textShadow: 'none'})
+      .set("#main-icon", {x:'0%', scale: 1})
+      .fromTo(".panel-holder", .5, {y: '0%', x: '-200%'}, {x: '0%'})
+  }
+
+  //show proper page Side
   handleClick(e) {
     this.setState({
       shifted: true,
     });
+    //slide icons out
+    this.iconsOut();
+    //click school, then slide in Side with title icon
     if (e.target.className === 'panel-holder school') {
-      this.setState({
-        showSchool: true,
-        showSignature: false,
-        showSchoolSteps: true,
-        showSignatureSteps: false,
-      });
+      //timeout func to delay setState
+      setTimeout(function() {
+        this.slideInSteps();
+        this.setState({
+          showSchool: true,
+          showSignature: false,
+          showSchoolSteps: true,
+          showSignatureSteps: false,
+        });
+      }.bind(this), 500)
     } 
     if (e.target.className === 'panel-holder signature') {
-      this.setState({
-        showSignature: true,
-        showSchool: false,
-        showSignatureSteps: true,
-        showSchoolSteps: false,
-      });
+      setTimeout(function() {
+        this.slideInSteps();
+        this.setState({
+          showSignature: true,
+          showSchool: false,
+          showSignatureSteps: true,
+          showSchoolSteps: false,
+        });
+      }.bind(this), 500)
     } 
   }
 
+
   returnClick(e) {
-    this.setState({
-      shifted: false,
-      showSchool: true,
-      showSignature: true,
-      showSchoolSteps: false,
-      showSignatureSteps: false,
-    });
+    this.returnTitleIcon();
+    setTimeout(function() { 
+      this.setState({
+        shifted: false,
+        showSchool: true,
+        showSignature: true,
+        showSchoolSteps: false,
+        showSignatureSteps: false,
+      });
+     }.bind(this), 1000);
   }
 
   // School Side - section one 

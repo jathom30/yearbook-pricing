@@ -112,7 +112,7 @@ export default class Side extends Component {
 
     return(
       <div className={panelClass} style={panelStyle}>
-        <div className={panelHolderClass} onClick={handleClick}>
+        <div className={panelHolderClass} onClick={handleClick} style={shifted ? {pointerEvents: 'none'} : {} }>
           <Panel 
             data={data} 
             shifted={shifted} 
