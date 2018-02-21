@@ -149,16 +149,21 @@ svg {
     text-align: center;
     border-radius: 5px;
     padding: 10px;
+    margin: 0 auto;
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2); }
     .steps .step-info h3 {
       margin: 20px 0 0; }
     .steps .step-info h3:first-of-type {
       margin: 0; }
+    .steps .step-info .things-to-get p {
+      padding: 5px; }
     .steps .step-info .inputs {
+      box-sizing: border-box;
       border: 1px solid #373b5d;
       border-radius: 3px;
       width: 200px;
-      height: 20px;
+      height: 30px;
+      line-height: 30px;
       font-size: 16px;
       padding: 0 8px; }
     .steps .step-info .input-and-error {
@@ -234,8 +239,27 @@ svg {
   background: #373b5d;
   color: #eaf1f4;
   text-align: center; }
+  .footer h3 {
+    padding: 10px 0;
+    cursor: pointer; }
+  .footer .contact-info {
+    background: #4a4f7d; }
+    .footer .contact-info.collapse {
+      max-height: 0;
+      overflow: hidden;
+      transition: all .5s ease-in-out; }
+    .footer .contact-info.expand {
+      max-height: 200px;
+      padding: 10px;
+      transition: all .5s ease-in-out; }
+    .footer .contact-info p {
+      padding: 3px; }
+    .footer .contact-info a {
+      color: white; }
+  .footer .copyright {
+    padding: 5px; }
 
-@media (min-width: 500px) {
+@media (min-width: 550px) {
   .header {
     justify-content: center; }
     .header svg {
@@ -267,3 +291,14 @@ svg {
       grid-column: span 2; }
     .steps .reset-return {
       grid-column: span 2; } }
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) {
+  .steps .step-info .inputs {
+    box-sizing: border-box;
+    border: 1px solid #373b5d;
+    border-radius: 3px;
+    width: 200px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 25px;
+    padding: 0 8px; } }

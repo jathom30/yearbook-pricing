@@ -196,6 +196,7 @@ svg {
     text-align: center;
     border-radius: 5px;
     padding: 10px;
+    margin: 0 auto;
     box-shadow: 0 5px 5px rgba(0,0,0,.2);
     h3 {
       margin: 20px 0 0;
@@ -203,11 +204,18 @@ svg {
     h3:first-of-type {
       margin: 0;
     }
+    .things-to-get {
+      p {
+        padding: 5px;
+      }
+    }
     .inputs {
+      box-sizing: border-box;
       border: 1px solid $shadow-fill;
       border-radius: 3px;
       width: 200px;
-      height: 20px;
+      height: 30px;
+      line-height: 30px;
       font-size: 16px;
       padding: 0 8px;
     }
@@ -309,10 +317,37 @@ svg {
   background: $shadow-fill;
   color: $icon-fill;
   text-align: center;
+  h3 {
+    padding: 10px 0;
+    cursor: pointer;
+  }
+  .contact-info {
+    &.collapse {
+      max-height: 0;
+      overflow: hidden;
+      transition: all .5s ease-in-out;
+    }
+    &.expand {
+      max-height: 200px;
+      padding: 10px;
+      transition: all .5s ease-in-out;
+    }
+    // padding: 5px;
+    background: lighten($color: $shadow-fill, $amount: 10%);
+    p {
+      padding: 3px;
+    }
+    a {
+      color: white;
+    }
+  }
+  .copyright {
+    padding: 5px;
+  }
 }
 
 
-@media (min-width: 500px) {
+@media (min-width: 550px) {
   //adjust header svg
   .header {
     justify-content: center;
@@ -359,5 +394,26 @@ svg {
       grid-column: span 2;
     }
   }
+}
 
+//make inputs larger on mobile
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 812px) 
+  and (-webkit-min-device-pixel-ratio: 3) { 
+
+    .steps {
+      .step-info {
+        .inputs {
+          box-sizing: border-box;
+          border: 1px solid $shadow-fill;
+          border-radius: 3px;
+          width: 200px;
+          height: 40px;
+          line-height: 40px;
+          font-size: 25px;
+          padding: 0 8px;
+        }
+      }
+    }
 }

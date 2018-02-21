@@ -5,6 +5,7 @@ import { TimelineMax, Elastic, Sine } from 'gsap';
 
 import Header from './components/Header';
 import Side from './components/Side';
+import Footer from './components/Footer';
 
 import { SCHOOL, SIGNATURE } from "./iconData";
 
@@ -23,11 +24,12 @@ export default class App extends Component {
       wrongPassword: false,
       pageCount: '',
       bookQuantity: '',
-      preferredProfit: '',
+      preferredProfit: '1000',
       printerQuote: '',
       quantitySignature: '',
       profitValue: '',
       passwordValue: '',
+      contactShow: false,
     };
     this.handleClick = this.handleClick.bind(this);
     this.returnClick = this.returnClick.bind(this);
@@ -41,6 +43,7 @@ export default class App extends Component {
     this.printerQuoteChange = this.printerQuoteChange.bind(this);
     this.preferredProfitChange = this.preferredProfitChange.bind(this);
     this.profitValueChange = this.profitValueChange.bind(this);
+    this.contact = this.contact.bind(this);
   }
 
   //Animations
@@ -299,6 +302,12 @@ export default class App extends Component {
     }
   }
 
+  contact(e) {
+    this.setState({
+      contactShow: !this.state.contactShow,
+    });
+  }
+
   render() {
     const { 
       school, 
@@ -317,6 +326,7 @@ export default class App extends Component {
       quantitySignature,
       preferredProfit,
       profitValue,
+      contactShow,
     } = this.state;
 
     // check for multiple of four pageCount
@@ -375,7 +385,7 @@ export default class App extends Component {
             quantitySignatureChange={this.quantitySignatureChange}
             printerQuote={printerQuote}
             printerQuoteChange={this.printerQuoteChange}
-            preferrefProfit={preferredProfit}
+            preferredProfit={preferredProfit}
             preferredProfitChange={this.preferredProfitChange}
             signatureQuoteInfo={signatureQuoteInfo}
             profitValue={profitValue}
@@ -393,9 +403,7 @@ export default class App extends Component {
           />
         </div>
 
-        <div className="footer">
-          © copyright 2017
-        </div>
+        <Footer contact={this.contact} contactShow={contactShow} />
 
       </div>
     );

@@ -12,7 +12,7 @@ export default class StepTwo extends Component {
         </div>
         <div className="step-info">
           <div className="things-to-get">
-            <h4>A List of Things</h4>
+            <h2>A List of Things</h2>
             <p>Staff List</p>
             <p>Team/Group photos</p>
             <p><a href="https://www.dropbox.com/sh/tjwz3xcryhzh39h/AAAMwS_AzFmYYyaC6V7aTuN7a?dl=0" target="_blank" rel="noopener noreferrer">Choose Cover and Page Design</a></p>
