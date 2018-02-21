@@ -69,13 +69,13 @@ h1, h2, h3, h4, p {
 svg {
   width: 150px;
   height: 150px;
-  #icon-circle {
+  .icon-circle {
     fill: $circle-fill;
   }
-  #icon-shadow {
+  .icon-shadow {
     fill: $shadow-fill;
   }
-  #icons {
+  .icons {
     fill: $icon-fill;
   }
 }
@@ -267,13 +267,13 @@ svg {
     width: 100px;
     height: auto;
     display: inline-block;
-    #icon-shadow {
+    .icon-shadow {
       fill: darken($color: $button-red, $amount: 10%);
     }
-    #icon-circle {
+    .icon-circle {
       fill: $button-red;
     }
-    #icons {
+    .icons {
       fill: lighten($color: $button-red, $amount: 10%);
     }
   }
@@ -354,7 +354,7 @@ svg {
     svg {
       width: 150px;
       // margin-right: 50px;
-      #icon-circle {
+      .icon-circle {
         fill: $circle-fill;
       }
     }

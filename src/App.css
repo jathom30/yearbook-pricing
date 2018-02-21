@@ -30,11 +30,11 @@ h1, h2, h3, h4, p {
 svg {
   width: 150px;
   height: 150px; }
-  svg #icon-circle {
+  svg .icon-circle {
     fill: #5b5d8e; }
-  svg #icon-shadow {
+  svg .icon-shadow {
     fill: #373b5d; }
-  svg #icons {
+  svg .icons {
     fill: #eaf1f4; }
 
 /* Header Setup */
@@ -204,11 +204,11 @@ svg {
     width: 100px;
     height: auto;
     display: inline-block; }
-    .password .lock-icon #icon-shadow {
+    .password .lock-icon .icon-shadow {
       fill: #9b434a; }
-    .password .lock-icon #icon-circle {
+    .password .lock-icon .icon-circle {
       fill: #b85961; }
-    .password .lock-icon #icons {
+    .password .lock-icon .icons {
       fill: #c77d83; }
   .password h2 {
     color: #373b5d;
@@ -264,7 +264,7 @@ svg {
     justify-content: center; }
     .header svg {
       width: 150px; }
-      .header svg #icon-circle {
+      .header svg .icon-circle {
         fill: #5b5d8e; }
     .header .header-text {
       position: absolute;
