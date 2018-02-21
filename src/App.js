@@ -210,7 +210,6 @@ export default class App extends Component {
       bookQuantity: '',
       quantitySignature: '',
       printerQuote: '',
-      preferredProfit: '',
       profitValue: '',
     });
   }
@@ -302,6 +301,7 @@ export default class App extends Component {
     }
   }
 
+  //show contact info
   contact(e) {
     this.setState({
       contactShow: !this.state.contactShow,
