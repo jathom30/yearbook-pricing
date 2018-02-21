@@ -20,6 +20,7 @@ export default class App extends Component {
       showSchoolSteps: false,
       showSignatureSteps: false,
       password: true,
+      wrongPassword: false,
       pageCount: '',
       bookQuantity: '',
       preferredProfit: '',
@@ -61,14 +62,20 @@ export default class App extends Component {
     .fromTo(".panel-holder", .5, {x: '0%', y: '100%'}, {x:'0%', y:'0%', ease:Elastic.easeOut.config(1.2, .5)}, 0)
   }
   //return icons
-  returnTitleIcon() {
+  removeStepsReturn() {
     const tl = new TimelineMax();
     tl 
-      .to(".steps", .5, {x: '200%'})
-      .to(".panel-holder", .5, {y: '-200%'}, 0)
+      .to(".steps", .5, {x: '200%', autoAlpha: 0})
+      .to(".panel-holder", .5, {y: '-300%', autoAlpha: 0}, 0)
       .set(".panel-holder h1", {y:'0%', color: '#373b5d', scale: 1, textShadow: 'none'})
       .set("#main-icon", {x:'0%', scale: 1})
-      .fromTo(".panel-holder", .5, {y: '0%', x: '-200%'}, {x: '0%'})
+      
+  }
+
+  returnTitleIcon() {
+    const tl = new TimelineMax();
+    tl
+      .to(".panel-holder", .5, {y: '0%', x: '0%', autoAlpha: 1}, .5)
   }
 
   //show proper page Side
@@ -106,7 +113,8 @@ export default class App extends Component {
 
 
   returnClick(e) {
-    this.returnTitleIcon();
+    //slide away title and steps from Side
+    this.removeStepsReturn();
     setTimeout(function() { 
       this.setState({
         shifted: false,
@@ -115,7 +123,9 @@ export default class App extends Component {
         showSchoolSteps: false,
         showSignatureSteps: false,
       });
-     }.bind(this), 1000);
+     }.bind(this), 500);
+     //bring in original two icons
+     this.returnTitleIcon();
   }
 
   // School Side - section one 
@@ -268,6 +278,10 @@ export default class App extends Component {
       this.setState({
         password: false,
       });
+    } else {
+      this.setState({
+        wrongPassword: true,
+      });
     }
   }
   //submit password on 'enter'
@@ -276,6 +290,10 @@ export default class App extends Component {
       if (this.state.passwordValue === 'arnold4121') {
         this.setState({
           password: false,
+        });
+      } else {
+        this.setState({
+          wrongPassword: true,
         });
       }
     }
@@ -293,6 +311,7 @@ export default class App extends Component {
       pageCount, 
       bookQuantity,
       password,
+      wrongPassword,
       passwordValue,
       printerQuote,
       quantitySignature,
@@ -364,6 +383,7 @@ export default class App extends Component {
             signatureProfit={signatureProfit}
             
             password={password}
+            wrongPassword={wrongPassword}
             passwordValue={passwordValue}
             passwordInput={this.passwordInput}
             passwordButton={this.passwordButton}
@@ -373,7 +393,8 @@ export default class App extends Component {
           />
         </div>
 
-        <div className="footer">© copyright 2017 
+        <div className="footer">
+          © copyright 2017
         </div>
 
       </div>

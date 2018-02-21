@@ -26,6 +26,7 @@ export default class Side extends Component {
       averages, 
       resetInputs,
       password,
+      wrongPassword,
       passwordValue,
       passwordInput,
       passwordButton,
@@ -81,6 +82,7 @@ export default class Side extends Component {
                   returnClick={returnClick}
 
                   password={password}
+                  wrongPassword={wrongPassword}
                   passwordValue={passwordValue}
                   passwordInput={passwordInput}
                   passwordButton={passwordButton}

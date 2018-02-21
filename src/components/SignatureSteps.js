@@ -11,6 +11,7 @@ export default class SignatureSteps extends Component {
       showSteps, 
       returnClick, 
       password, 
+      wrongPassword,
       passwordValue, 
       passwordInput, 
       passwordButton, 
@@ -30,13 +31,17 @@ export default class SignatureSteps extends Component {
     
     let stepsOrPassword = null;
     if (password) {
-      stepsOrPassword = <Password 
-                          passwordValue={passwordValue} 
-                          passwordInput={passwordInput} 
-                          passwordButton={passwordButton}
-                          submitPassword={submitPassword} />
+      stepsOrPassword = <div className={showSteps ? "steps" : "steps hide"}>
+                          <Password 
+                            passwordValue={passwordValue} 
+                            wrongPassword={wrongPassword}
+                            passwordInput={passwordInput} 
+                            passwordButton={passwordButton}
+                            submitPassword={submitPassword} />
+                          <ResetReturn returnClick={returnClick} resetInputs={resetInputs} signatureProfit={signatureProfit}/>
+                        </div>
     } else {
-      stepsOrPassword = <div>
+      stepsOrPassword = <div className={showSteps ? "steps" : "steps hide"}>
                           <StepOne 
                             quantitySignature={quantitySignature} 
                             quantitySignatureChange={quantitySignatureChange} 
@@ -52,15 +57,16 @@ export default class SignatureSteps extends Component {
                             signatureProfit={signatureProfit}
                             resetInputs={resetInputs} />
 
+                          <ResetReturn returnClick={returnClick} resetInputs={resetInputs} signatureProfit={signatureProfit}/>
                         </div>
     }
 
     return(
-      <div className={showSteps ? "steps" : "steps hide"}>
+      <div>
 
         { stepsOrPassword }  
 
-        <ResetReturn returnClick={returnClick} resetInputs={resetInputs} signatureProfit={signatureProfit}/>
+        {/* <ResetReturn returnClick={returnClick} resetInputs={resetInputs} signatureProfit={signatureProfit}/> */}
       </div>
     );
   }

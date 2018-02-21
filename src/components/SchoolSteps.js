@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import StepOne from './school/StepOne';
 import StepTwo from './school/StepTwo';
-import ResetReturn from './ResetReturn';
+// import ResetReturn from './ResetReturn';
 
 export default class SchoolSteps extends Component {
   render() {
@@ -37,7 +37,13 @@ export default class SchoolSteps extends Component {
 
         <StepTwo />
 
-        <ResetReturn returnClick={returnClick} resetInputs={resetInputs} averages={averages} />
+        <div className="reset-return">
+          <div className="button">
+            <button className="return-button" onClick={returnClick}>Back</button>
+          </div>
+        </div>
+
+        {/* <ResetReturn returnClick={returnClick} resetInputs={resetInputs} averages={averages} /> */}
       </div>
     );
   }

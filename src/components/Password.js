@@ -4,11 +4,11 @@ import LockIcon from '../assets/LockIcon';
 
 export default class Password extends Component {
   render() {
-    const { passwordValue, passwordInput, passwordButton, submitPassword } = this.props;
+    const { passwordValue, wrongPassword, passwordInput, passwordButton, submitPassword } = this.props;
     return(
       <div className="password">
         <LockIcon />
-        <h2>Please, enter your password:</h2>
+        <h2>{wrongPassword ? "Incorrect password, try again:" : "Please, enter your password:"}</h2>
         <div className="password-inputs">
           <input id="password" type="password" placeholder="password" value={passwordValue} onChange={passwordInput} onKeyDown={submitPassword} />
           <button id="signature-password-button" type="button" onClick={passwordButton}>Submit</button>

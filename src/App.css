@@ -16,11 +16,13 @@ h1, h2, h3, h4, p {
   margin: 0; }
 
 .hide {
-  display: none; }
+  display: none !important; }
 
 /* App Setup */
 .App {
   min-height: 100vh;
+  width: 100vw;
+  overflow: hidden;
   display: grid;
   grid-template-rows: auto 1fr auto; }
 
@@ -59,7 +61,7 @@ svg {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  width: 65vw;
+  width: 100%;
   margin: 0 auto; }
   .reset-return .button {
     text-align: center; }
@@ -67,20 +69,20 @@ svg {
     margin: 20px auto; }
 
 .reset-button {
-  padding: 5px 30px;
+  padding: 10px 50px;
   margin: 10px 0 0;
   font-size: 16px;
   border: none;
   border-radius: 3px;
   text-transform: uppercase;
-  background: #a54d54;
+  background: #b85961;
   color: white;
   cursor: pointer; }
   .reset-button:hover {
-    background: #823d42; }
+    background: #9b434a; }
 
 .return-button {
-  padding: 5px 30px;
+  padding: 10px 50px;
   margin: 10px 0 0;
   font-size: 16px;
   border: none;
@@ -119,113 +121,149 @@ svg {
       pointer-events: none; }
 
 /* Steps Setup */
-.steps .step-one {
-  margin-bottom: 100px; }
-
-.steps .step-title {
-  position: relative;
-  margin: 20px 0; }
-  .steps .step-title svg {
-    display: block;
-    margin: 50px auto 15px;
-    width: 75px;
-    height: 75px;
-    top: 50%;
-    left: 50%; }
-  .steps .step-title h2 {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    text-shadow: 1px 1px 5px black; }
-
-.steps .step-info {
-  background: white;
-  width: 90vw;
-  text-align: center;
-  border-radius: 5px;
-  padding: 10px;
-  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2); }
-  .steps .step-info h3 {
-    margin: 20px 0 0; }
-  .steps .step-info h3:first-of-type {
-    margin: 0; }
-  .steps .step-info .inputs {
-    border: 1px solid #373b5d;
-    border-radius: 3px;
-    width: 200px;
-    height: 20px;
-    font-size: 16px;
-    padding: 0 8px; }
-  .steps .step-info .input-and-error {
-    position: relative; }
-    .steps .step-info .input-and-error .error-warning {
-      width: 200px;
-      margin: 5px auto 0;
-      border: red solid 1px;
-      background: pink;
-      border-radius: 3px;
-      padding: 2px 4px; }
-  .steps .step-info .quote-range {
-    background: #f3f7f8;
+.steps {
+  width: 100vw; }
+  .steps .step-one {
+    margin-bottom: 100px; }
+  .steps .step-title {
+    position: relative;
+    margin: 20px 0; }
+    .steps .step-title svg {
+      display: block;
+      margin: 50px auto 15px;
+      width: 75px;
+      height: 75px;
+      top: 50%;
+      left: 50%; }
+    .steps .step-title h2 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      text-align: center;
+      text-shadow: 1px 1px 5px black; }
+  .steps .step-info {
+    background: white;
+    width: 90vw;
+    text-align: center;
     border-radius: 5px;
     padding: 10px;
-    margin-top: 40px;
-    box-shadow: 0px 2px 15px -1px rgba(0, 0, 0, 0.2) inset; }
-    .steps .step-info .quote-range h3 {
-      margin: 0 0 10px; }
-    .steps .step-info .quote-range .school-quote-high-low {
-      padding: 10px 0; }
-      .steps .step-info .quote-range .school-quote-high-low .details {
-        font-size: .75em;
-        margin: 30px 0 0; }
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2); }
+    .steps .step-info h3 {
+      margin: 20px 0 0; }
+    .steps .step-info h3:first-of-type {
+      margin: 0; }
+    .steps .step-info .inputs {
+      border: 1px solid #373b5d;
+      border-radius: 3px;
+      width: 200px;
+      height: 20px;
+      font-size: 16px;
+      padding: 0 8px; }
+    .steps .step-info .input-and-error {
+      position: relative; }
+      .steps .step-info .input-and-error .error-warning {
+        width: 200px;
+        margin: 5px auto 0;
+        border: red solid 1px;
+        background: pink;
+        border-radius: 3px;
+        padding: 2px 4px; }
+    .steps .step-info .quote-range {
+      background: #f3f7f8;
+      border-radius: 5px;
+      padding: 10px;
+      margin-top: 40px;
+      box-shadow: 0px 2px 15px -1px rgba(0, 0, 0, 0.2) inset; }
+      .steps .step-info .quote-range h3 {
+        margin: 0 0 10px; }
+      .steps .step-info .quote-range .school-quote-high-low {
+        padding: 10px 0; }
+        .steps .step-info .quote-range .school-quote-high-low .details {
+          font-size: .75em;
+          margin: 30px 0 0; }
 
 /* Password Setup */
 .password {
   width: 250px;
   padding: 5px;
+  margin: 0 auto;
   text-align: center;
-  background: #ebd3d5;
+  background: #f5e8e9;
   border-radius: 3px;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
-  border: 3px solid #a54d54;
+  border: 3px solid #b85961;
   z-index: 100; }
   .password .lock-icon {
     width: 100px;
     height: auto;
     display: inline-block; }
     .password .lock-icon #icon-shadow {
-      fill: #823d42; }
+      fill: #9b434a; }
     .password .lock-icon #icon-circle {
-      fill: #a54d54; }
+      fill: #b85961; }
     .password .lock-icon #icons {
-      fill: #ba6b71; }
+      fill: #c77d83; }
   .password h2 {
     color: #373b5d;
     margin: 0 auto;
     padding: 0 0 10px; }
-  .password .password-inputs #password, .password .password-inputs #signature-password-button {
-    display: inline-block;
-    font-size: 20px;
-    padding: 5px 10px; }
-  .password .password-inputs #password {
-    border: 1px solid #373b5d;
-    border-right: none;
-    border-radius: 3px 0 0 3px;
-    width: 100px; }
-  .password .password-inputs #signature-password-button {
-    border: 1px solid #373b5d;
-    border-left: none;
-    border-radius: 0 3px 3px 0;
-    background: #a54d54;
-    color: white;
-    cursor: pointer; }
-    .password .password-inputs #signature-password-button:hover {
-      background: #823d42; }
+  .password .password-inputs {
+    margin: 20px; }
+    .password .password-inputs #password, .password .password-inputs #signature-password-button {
+      font-size: 20px;
+      padding: 5px 0; }
+    .password .password-inputs #password {
+      border: 1px solid #373b5d;
+      border-radius: 3px;
+      width: 200px; }
+    .password .password-inputs #signature-password-button {
+      border: 1px solid #373b5d;
+      margin-top: 20px;
+      width: 200px;
+      border-radius: 3px;
+      background: #b85961;
+      color: white;
+      cursor: pointer; }
+      .password .password-inputs #signature-password-button:hover {
+        background: #9b434a; }
 
 /* Footer Setup */
 .footer {
   background: #373b5d;
   color: #eaf1f4;
   text-align: center; }
+
+@media (min-width: 500px) {
+  .header {
+    justify-content: center; }
+    .header svg {
+      width: 150px; }
+      .header svg #icon-circle {
+        fill: #5b5d8e; }
+    .header .header-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-shadow: 1px 1px 5px black; }
+      .header .header-text h1 {
+        font-size: 3em; }
+      .header .header-text h3 {
+        font-size: 2em; }
+  .panels {
+    flex-direction: row; }
+  .steps {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr;
+    max-width: 1000px;
+    margin: 0 auto; }
+    .steps .step-info {
+      margin: 0 auto;
+      width: 85%; }
+    .steps .password {
+      grid-column: span 2; }
+    .steps .reset-return {
+      grid-column: span 2; } }
