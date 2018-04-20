@@ -185,8 +185,8 @@ export default class App extends Component {
     let averages = null;
     let pageCountError = this.pageCountCheck();
     let pageQuantityError = this.bookQuantityCheck();
-    // if schoolAverage is Infinity(0/0) or pageCount is not empty or pageQuantity is not empty
-    if (schoolAverage === Infinity || pageCountError !== null || pageQuantityError !== null) {
+    // if schoolAverage is Infinity(0/0) or pageCount is not empty or pageQuantity is not empty or pageCount is not empty
+    if (schoolAverage === Infinity || pageCountError !== null || pageQuantityError !== null || pageCount === '') {
       averages = null;
     } else {
       averages= <div className="quote-range">
