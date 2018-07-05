@@ -157,6 +157,10 @@ svg {
       margin: 0; }
     .steps .step-info .things-to-get p {
       padding: 5px; }
+    .steps .step-info .things-to-get h4 {
+      margin-top: 15px; }
+    .steps .step-info .things-to-get ul li {
+      list-style: none; }
     .steps .step-info .inputs {
       box-sizing: border-box;
       border: 1px solid #373b5d;
